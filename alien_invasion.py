@@ -22,13 +22,14 @@ def run_game():
     aliens = Group()
 
     # 创建外星人群
-    gf.create_fleet(ai_settings, screen, aliens)
+    gf.create_fleet(ai_settings, screen, ship, aliens)
     # 开始游戏主循环
     while True:
         # 监视键盘和鼠标事件
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        gf.update_bullets(bullets)
+        gf.update_bullets(aliens,bullets)
+        gf.update_aliens(ai_settings,aliens)
         # 更新屏幕图像，并切换到新图像
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
