@@ -5,7 +5,7 @@ import game_functions as gf
 from settings import Settings
 from ship import Ship
 from game_stats import GameStats
-
+from button import Button
 
 def run_game():
     # 初始化游戏并创建一个屏幕对象,设置屏幕对象
@@ -26,6 +26,8 @@ def run_game():
     # 创建外星人群
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
+    # 创建play按钮
+    play_button=Button(ai_settings,screen,"Play")
 
     # 开始游戏主循环
     while True:
@@ -36,7 +38,7 @@ def run_game():
             gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
             gf.update_aliens(ai_settings,stats,screen, ship, aliens,bullets)
         # 更新屏幕图像，并切换到新图像
-        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
+        gf.update_screen(ai_settings, screen, stats,ship, aliens, bullets,play_button)
 
 
 run_game()
